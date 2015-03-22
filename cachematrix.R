@@ -1,7 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Coursera R Programming 012 - Course Project 2
+## W. J. Raynor
 
-## The function makeCacheMatrix() caches/returns the value of a matrix and/or its inverse
+## Provides functions to save and retrieve cached inverse of a square matrix, eliminating the
+## need for repeated inversions of the same matrix.
+
+## The function makeCacheMatrix() caches/returns the value of a matrix and/or its inverse.
+## This is a helper function, called by cacheSolve, to set and retrieve the matrices.
 
 makeCacheMatrix <- function(x = matrix()) {
     m <- NULL
@@ -19,7 +23,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## cacheSolve() returns the inverse of a matrix. If the cached inverse exists, the function retrieves
+## and returns that matrix. Otherwise the function solves for the inverse, caches it and returns it. 
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
@@ -28,6 +33,7 @@ cacheSolve <- function(x, ...) {
     message("getting cached data")
     return(m)
   }
+  # the inverse does not exist. get it, save it, and return it.
   data <- x$get()
   m <- solve(data, ...)
   x$setinverse(m)
